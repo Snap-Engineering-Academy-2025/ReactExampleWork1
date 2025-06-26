@@ -8,12 +8,19 @@ import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Grid from '@mui/material/Grid';
-import * as React from 'react';
-import Box from '@mui/material/Box';
+//import * as React from 'react';
+import React,{useState} from "react"
 
-// import characters from './protagonists.json'
+import Box from '@mui/material/Box';
+import DataCard from './DataCard';
+import characters from './protagonists.json';
 
 function App() {
+const[count, setCount]= useState(0)
+  function add() {
+    setCount(count+1)
+  }
+
   return (
     <>
       <Container maxWidth="md" sx={{ mb: 4 }}>
@@ -23,7 +30,7 @@ function App() {
           color="text.primary"
           sx={{ py: 2 }}
         >
-          LA Surf Shops to Visit
+          Surf Shops to Visit
         </Typography>
         <Typography
           variant="h5"
@@ -31,7 +38,7 @@ function App() {
           color="text.secondary"
           sx={{ mx: 10 }}
         >
-          Los Angeles
+          Check out these stores for your surfing needs. Wetsuits, longboards, shortboards, wax, sunscreen, etc. 
         </Typography>
         <Box textAlign='center'>
         <Button 
@@ -44,17 +51,28 @@ function App() {
         //style={{backgroundColor: red}}
         //
         >
-          Red Button?
+          Testing Red 
         </Button>
+        
+        <Button size="small"
+                variant="contained"
+                sx={{ px: 4, mx: "auto" }}
+                onClick={add}
+
+
+                // onClick={() => {
+                //     setCount("You clicked me!");
+                // }}
+                >Click Me</Button>
         </Box>
       </Container>
 
       <Container maxWidth="lg">
-        
-        <Grid container spacing={4}>
-          <Grid >
+      
+        {/* {<Grid container spacing={4} sx= {{paddingBottom: 4}}>
+          <Grid > */}
 
-              <Card
+              {/* {<Card
                 sx={{ maxWidth: 345 }}
               >
                 <CardMedia
@@ -76,16 +94,23 @@ function App() {
                   <Button size="small">Learn More</Button>
                 </CardActions>
 
-              </Card>
+              </Card> } */}
+              {/* <DataCard
+              text = "Mollusk Surf Shop "
+              imageURL={"https://media.timeout.com/images/102831020/750/562/image.jpg"}
+              description = {`Surf aficionados and pros alike can drool over the custom boards, 
+                    artist-designed tees, hard-to-find wet suits and other beach gear like handmade backpacks and sandals. `}
+              //[{ " "}]
+              />
 
           </Grid>
 
 
 
-          <Grid>
+          <Grid> */}
 
 
-            <Card
+            {/* { <Card
               sx={{ maxWidth: 345 }}
             >
               <CardMedia
@@ -98,9 +123,11 @@ function App() {
                   Rider Shack
                 </Typography>
                 <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-                  Opened in 2006, Rider Shack is a neighborhood surf shop at its core. Located in 
-                  in Marina Del Rey and Culver City area. A 
-                  favored spot and a local hangout for Venice and Santa Monica surfers.
+                  Welcome to Rider Shack Surf Shop, a small, family-owned surf shop in 
+                  LA dedicated to serving the local surf community since 2006.  
+                  Whether you’re a beginner or a seasoned pro 
+                  chasing the next swell, we go above and beyond to provide  
+                  customer service and  advice.
                 </Typography>
               </CardContent>
               <CardActions>
@@ -108,13 +135,30 @@ function App() {
                 <Button size="small">Learn More</Button>
               </CardActions>
 
-            </Card>
+            </Card> } */}
+            {/* <DataCard
+              text = "Rider Shack"
+              imageURL={"https://media.timeout.com/images/103276135/1920/1080/image.webp"}
+              description = {`Welcome to Rider Shack Surf Shop, a family-owned surf shop in 
+                  LA dedicated to serving the local surf community since 2006.  
+                  Whether you’re a beginner or a seasoned pro, we go above and beyond to provide  
+                  customer service and  advice. `}
+              //[{ " "}]
+              />
+
+
+
+
+
+
+
+
           </Grid>
 
-          <Grid>
+          <Grid> */}
 
 
-            <Card
+            {/* { <Card
               sx={{ maxWidth: 345 }}
             >
               <CardMedia
@@ -137,11 +181,58 @@ function App() {
                 <Button size="small">Learn More</Button>
               </CardActions>
 
-            </Card>
+            </Card> } */}
+              {/* <DataCard
+              text = "Dive and Surf"
+              imageURL={"https://media.timeout.com/images/103276130/1920/1080/image.webp"}
+              description = {`Their selection of surfboards is smaller compared to nearby 
+                  competitors, but Dive N Surf makes up for it in the amount 
+                  of dive gear they carry. `}
+              //[{ " "}]
+              />
+
+
           </Grid>
+
+
+
+
+          <Grid //item xs={12} md = {4}
+          >
+             <DataCard
+              text = "Surf Wakiki"
+              imageURL={"https://marvel-b1-cdn.bc0a.com/f00000000296017/mallmaverick.imgix.net/web/property_managers/1/properties/711/all/20231229032934/IMG_6087.jpg?auto=format,compress"}
+              description = {`Looking for the ultimate beach paradise
+             Look no further than Surf Waikiki—your one-stop destination
+              for all your beach rental needs! 
+              We've got you covered for an epic beach day!  `}
+              //[{ " "}] 
+              />
+          </Grid>
+          <Grid>
+            <DataCard
+              text={characters[0].text}
+              imageURL={characters[0].imageURL}
+              description={characters[0].description}
+            />
+          </Grid>
+
+        </Grid> } */}
+{/* this below already generates cards too. with JSON file*/}
+        <Grid spacing={4} sx= {{paddingBottom: 4}} container>
+          {characters.map((character) => (
+            <Grid>
+              <DataCard
+                text={character.text}
+                imageURL={character.imageURL}
+                description={[character.description
+                ]}
+              />
+            </Grid>
+          ))}
         </Grid>
 
-
+ 
 
       </Container>
     </>
@@ -150,4 +241,5 @@ function App() {
   )
 }
 
+console.log("My data:", characters);
 export default App
